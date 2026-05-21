@@ -70,3 +70,12 @@
     outline-offset: 0.125rem;
   }
 }
+
+@media (width <= 640px) {
+  .range {
+    grid-column: 3;
+    grid-row: 1;
+    max-width: none;
+    margin-top: 0;
+  }
+}

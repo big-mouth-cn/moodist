@@ -30,3 +30,14 @@
     color: var(--color-foreground);
   }
 }
+
+@media (width <= 640px) {
+  .favoriteButton {
+    position: static;
+    grid-column: 4;
+    grid-row: 1;
+    width: 34px;
+    height: 34px;
+    justify-self: end;
+  }
+}

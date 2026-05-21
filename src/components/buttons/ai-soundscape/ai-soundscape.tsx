@@ -92,66 +92,68 @@ function AISoundscapeModal({ onClose, show }: AISoundscapeModalProps) {
 
   return (
     <Modal show={show} wide onClose={onClose}>
-      <header className={styles.header}>
-        <div className={styles.icon}>
-          <FaWandMagicSparkles />
-        </div>
-        <div>
-          <h2 className={styles.title}>{t('aiSoundscape.title')}</h2>
-          <p className={styles.desc}>{t('aiSoundscape.desc')}</p>
-        </div>
-      </header>
+      <div className={styles.dialog}>
+        <header className={styles.header}>
+          <div className={styles.icon}>
+            <FaWandMagicSparkles />
+          </div>
+          <div>
+            <h2 className={styles.title}>{t('aiSoundscape.title')}</h2>
+            <p className={styles.desc}>{t('aiSoundscape.desc')}</p>
+          </div>
+        </header>
 
-      <form className={styles.form} onSubmit={handleGenerate}>
-        <textarea
-          className={styles.textarea}
-          placeholder={t('aiSoundscape.placeholder')}
-          value={prompt}
-          onChange={e => setPrompt(e.target.value)}
-        />
+        <form className={styles.form} onSubmit={handleGenerate}>
+          <textarea
+            className={styles.textarea}
+            placeholder={t('aiSoundscape.placeholder')}
+            value={prompt}
+            onChange={e => setPrompt(e.target.value)}
+          />
 
-        <div className={styles.examples}>
-          {examples.map(example => (
-            <button
-              key={example}
-              type="button"
-              onClick={() => setPrompt(example)}
-            >
-              {example}
-            </button>
-          ))}
-        </div>
-
-        {error && <p className={styles.error}>{error}</p>}
-
-        <button
-          className={styles.generate}
-          disabled={!prompt.trim() || isGenerating}
-          type="submit"
-        >
-          {isGenerating
-            ? t('aiSoundscape.generating')
-            : t('aiSoundscape.generate')}
-        </button>
-      </form>
-
-      {result && (
-        <section className={styles.preview}>
-          <h3>{t('aiSoundscape.previewTitle')}</h3>
-          {result.summary && <p>{result.summary}</p>}
-          <div className={styles.sounds}>
-            {Object.entries(result.sounds).map(([id, volume]) => (
-              <div className={styles.sound} key={id}>
-                <span>{t(`sounds.${id}`)}</span>
-                <span>{Math.round(volume * 100)}%</span>
-              </div>
+          <div className={styles.examples}>
+            {examples.map(example => (
+              <button
+                key={example}
+                type="button"
+                onClick={() => setPrompt(example)}
+              >
+                {example}
+              </button>
             ))}
           </div>
-          <button className={styles.apply} onClick={apply}>
-            {t('aiSoundscape.apply')}
+
+          {error && <p className={styles.error}>{error}</p>}
+
+          <button
+            className={styles.generate}
+            disabled={!prompt.trim() || isGenerating}
+            type="submit"
+          >
+            {isGenerating
+              ? t('aiSoundscape.generating')
+              : t('aiSoundscape.generate')}
           </button>
-        </section>
-      )}
+        </form>
+
+        {result && (
+          <section className={styles.preview}>
+            <h3>{t('aiSoundscape.previewTitle')}</h3>
+            {result.summary && <p>{result.summary}</p>}
+            <div className={styles.sounds}>
+              {Object.entries(result.sounds).map(([id, volume]) => (
+                <div className={styles.sound} key={id}>
+                  <span>{t(`sounds.${id}`)}</span>
+                  <span>{Math.round(volume * 100)}%</span>
+                </div>
+              ))}
+            </div>
+            <button className={styles.apply} onClick={apply}>
+              {t('aiSoundscape.apply')}
+            </button>
+          </section>
+        )}
+      </div>
     </Modal>
   );
 }

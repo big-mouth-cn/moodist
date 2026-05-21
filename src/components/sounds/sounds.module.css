@@ -5,6 +5,13 @@
   margin-top: 20px;
 }
 
+@media (width <= 640px) {
+  .sounds {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
 .button {
   position: relative;
   display: flex;
