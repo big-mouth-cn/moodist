@@ -21,9 +21,9 @@ export function Hero() {
               alt="Faded Moodist Logo"
               aria-hidden="true"
               className={styles.logo}
-              height={48}
+              height={160}
               src="/logo.svg"
-              width={48}
+              width={160}
             />
           </div>
 
