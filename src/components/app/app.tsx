@@ -4,6 +4,7 @@ import { BiSolidHeart } from 'react-icons/bi/index';
 import { Howler } from 'howler';
 
 import { useSoundStore } from '@/stores/sound';
+import { useI18n } from '@/hooks/use-i18n';
 
 import { Container } from '@/components/container';
 import { StoreConsumer } from '@/components/store-consumer';
@@ -22,6 +23,7 @@ import { subscribe } from '@/lib/event';
 
 export function App() {
   const categories = useMemo(() => sounds.categories, []);
+  const { t } = useI18n();
 
   const favorites = useSoundStore(useShallow(state => state.getFavorites()));
   const pause = useSoundStore(state => state.pause);
@@ -79,12 +81,12 @@ export function App() {
         icon: <BiSolidHeart />,
         id: 'favorites',
         sounds: favoriteSounds as Array<Sound>,
-        title: 'Favorites',
+        title: t('categories.favorites'),
       });
     }
 
     return [...favorites, ...categories];
-  }, [favoriteSounds, categories]);
+  }, [favoriteSounds, categories, t]);
 
   return (
     <SnackbarProvider>

@@ -1,4 +1,5 @@
 import { Sounds } from '@/components/sounds';
+import { useI18n } from '@/hooks/use-i18n';
 
 import styles from './category.module.css';
 
@@ -15,6 +16,9 @@ export function Category({
   sounds,
   title,
 }: CategoryProps) {
+  const { t } = useI18n();
+  const translatedTitle = id === 'favorites' ? title : t(`categories.${id}`);
+
   return (
     <div className={styles.category} id={`category-${id}`}>
       <div className={styles.iconContainer}>
@@ -24,7 +28,7 @@ export function Category({
         </div>
       </div>
 
-      <div className={styles.title}>{title}</div>
+      <div className={styles.title}>{translatedTitle}</div>
 
       <Sounds functional={functional} id={id} sounds={sounds} />
     </div>

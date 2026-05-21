@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'motion/react';
 
 import { Sound } from './sound';
 import { useLocalStorage } from '@/hooks/use-local-storage';
+import { useI18n } from '@/hooks/use-i18n';
 import { cn } from '@/helpers/styles';
 import { fade, scale, mix } from '@/lib/motion';
 
@@ -18,6 +19,7 @@ interface SoundsProps {
 
 export function Sounds({ functional, id, sounds }: SoundsProps) {
   const [showAll, setShowAll] = useLocalStorage(`${id}-show-more`, false);
+  const { t } = useI18n();
   const [clickedMore, setClickedMore] = useState(false);
 
   const [isAnimating, setIsAnimating] = useState(false);
@@ -106,7 +108,7 @@ export function Sounds({ functional, id, sounds }: SoundsProps) {
               onAnimationComplete={() => setIsAnimating(false)}
               onAnimationStart={() => setIsAnimating(true)}
             >
-              {showAll ? 'Show Less' : 'Show More'}
+              {showAll ? t('common.showLess') : t('common.showMore')}
             </motion.span>
           </AnimatePresence>
         </button>

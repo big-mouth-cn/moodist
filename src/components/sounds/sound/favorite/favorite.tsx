@@ -8,6 +8,7 @@ import { fade } from '@/lib/motion';
 import styles from './favorite.module.css';
 
 import { useKeyboardButton } from '@/hooks/use-keyboard-button';
+import { useI18n } from '@/hooks/use-i18n';
 import { waitUntil } from '@/helpers/wait';
 
 interface FavoriteProps {
@@ -18,6 +19,7 @@ interface FavoriteProps {
 export function Favorite({ id, label }: FavoriteProps) {
   const isFavorite = useSoundStore(state => state.sounds[id].isFavorite);
   const toggleFavorite = useSoundStore(state => state.toggleFavorite);
+  const { t } = useI18n();
 
   const handleToggle = async () => {
     toggleFavorite(id);
@@ -45,8 +47,8 @@ export function Favorite({ id, label }: FavoriteProps) {
         className={cn(styles.favoriteButton, isFavorite && styles.isFavorite)}
         aria-label={
           isFavorite
-            ? `Remove ${label} Sound from Favorites`
-            : `Add ${label} Sound to Favorites`
+            ? t('common.removeFavoriteAria', { label })
+            : t('common.addFavoriteAria', { label })
         }
         onKeyDown={handleKeyDown}
         onClick={e => {

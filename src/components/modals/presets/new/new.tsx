@@ -3,6 +3,7 @@ import { useState, type FormEvent } from 'react';
 import { cn } from '@/helpers/styles';
 import { useSoundStore } from '@/stores/sound';
 import { usePresetStore } from '@/stores/preset';
+import { useI18n } from '@/hooks/use-i18n';
 
 import styles from './new.module.css';
 
@@ -12,6 +13,7 @@ export function New() {
   const noSelected = useSoundStore(state => state.noSelected());
   const sounds = useSoundStore(state => state.sounds);
   const addPreset = usePresetStore(state => state.addPreset);
+  const { t } = useI18n();
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -33,7 +35,7 @@ export function New() {
 
   return (
     <div className={styles.new}>
-      <h3 className={styles.title}>New Preset</h3>
+      <h3 className={styles.title}>{t('presets.newTitle')}</h3>
 
       <form
         className={cn(styles.form, noSelected && styles.disabled)}
@@ -41,19 +43,17 @@ export function New() {
       >
         <input
           disabled={noSelected}
-          placeholder="Preset's Name"
+          placeholder={t('presets.namePlaceholder')}
           required
           type="text"
           value={name}
           onChange={e => setName(e.target.value)}
         />
-        <button disabled={noSelected}>Save</button>
+        <button disabled={noSelected}>{t('presets.save')}</button>
       </form>
 
       {noSelected && (
-        <p className={styles.noSelected}>
-          To make a preset, first select some sounds.
-        </p>
+        <p className={styles.noSelected}>{t('presets.noSelected')}</p>
       )}
     </div>
   );

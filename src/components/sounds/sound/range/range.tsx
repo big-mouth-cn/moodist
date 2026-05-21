@@ -1,4 +1,5 @@
 import { useSoundStore } from '@/stores/sound';
+import { useI18n } from '@/hooks/use-i18n';
 
 import styles from './range.module.css';
 
@@ -12,10 +13,11 @@ export function Range({ id, label }: RangeProps) {
   const volume = useSoundStore(state => state.sounds[id].volume);
   const isSelected = useSoundStore(state => state.sounds[id].isSelected);
   const locked = useSoundStore(state => state.locked);
+  const { t } = useI18n();
 
   return (
     <input
-      aria-label={`${label} sound volume`}
+      aria-label={t('common.soundVolumeAria', { label })}
       autoComplete="off"
       className={styles.range}
       disabled={!isSelected}

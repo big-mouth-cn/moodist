@@ -9,6 +9,7 @@ import { useSoundStore } from '@/stores/sound';
 import { useSettingsStore } from '@/stores/settings';
 import { useLoadingStore } from '@/stores/loading';
 import { cn } from '@/helpers/styles';
+import { useI18n } from '@/hooks/use-i18n';
 
 import styles from './sound.module.css';
 
@@ -27,6 +28,8 @@ export const Sound = forwardRef<HTMLDivElement, SoundProps>(function Sound(
   { functional, hidden, icon, id, label, selectHidden, src, unselectHidden },
   ref,
 ) {
+  const { t } = useI18n();
+  const translatedLabel = t(`sounds.${id}`);
   const isPlaying = useSoundStore(state => state.isPlaying);
   const play = useSoundStore(state => state.play);
   const selectSound = useSoundStore(state => state.select);
@@ -89,7 +92,7 @@ export const Sound = forwardRef<HTMLDivElement, SoundProps>(function Sound(
 
   return (
     <div
-      aria-label={`${label} sound`}
+      aria-label={t('common.soundAria', { label: translatedLabel })}
       ref={ref}
       role="button"
       tabIndex={0}
@@ -101,7 +104,7 @@ export const Sound = forwardRef<HTMLDivElement, SoundProps>(function Sound(
       onClick={handleClick}
       onKeyDown={handleKeyDown}
     >
-      <Favorite id={id} label={label} />
+      <Favorite id={id} label={translatedLabel} />
       <div className={styles.icon}>
         {isLoading ? (
           <span aria-hidden="true" className={styles.spinner}>
@@ -112,9 +115,9 @@ export const Sound = forwardRef<HTMLDivElement, SoundProps>(function Sound(
         )}
       </div>
       <div className={styles.label} id={id}>
-        {label}
+        {translatedLabel}
       </div>
-      <Range id={id} label={label} />
+      <Range id={id} label={translatedLabel} />
     </div>
   );
 });

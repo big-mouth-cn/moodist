@@ -8,6 +8,7 @@ import { Tooltip } from '@/components/tooltip';
 import { useSoundStore } from '@/stores/sound';
 import { cn } from '@/helpers/styles';
 import { fade, mix, slideX } from '@/lib/motion';
+import { useI18n } from '@/hooks/use-i18n';
 
 import styles from './unselect.module.css';
 
@@ -17,6 +18,7 @@ export function UnselectButton() {
   const hasHistory = useSoundStore(state => !!state.history);
   const unselectAll = useSoundStore(state => state.unselectAll);
   const locked = useSoundStore(state => state.locked);
+  const { t } = useI18n();
 
   const variants = {
     ...mix(fade(), slideX(15)),
@@ -32,43 +34,31 @@ export function UnselectButton() {
   useHotkeys('shift+r', handleToggle, {}, [handleToggle]);
 
   return (
-    <>
-      <AnimatePresence mode="wait">
-        {(!noSelected || hasHistory) && (
-          <motion.div
-            animate="show"
-            exit="exit"
-            initial="hidden"
-            variants={variants}
-          >
-            <Tooltip.Provider delayDuration={0}>
-              <Tooltip
-                content={
-                  hasHistory
-                    ? 'Restore unselected sounds.'
-                    : 'Unselect all sounds.'
-                }
+    <AnimatePresence mode="wait">
+      {(!noSelected || hasHistory) && (
+        <motion.div
+          animate="show"
+          exit="exit"
+          initial="hidden"
+          variants={variants}
+        >
+          <Tooltip.Provider delayDuration={0}>
+            <Tooltip content={t('shortcuts.unselectAll')}>
+              <button
+                disabled={noSelected && !hasHistory}
+                aria-label={t('shortcuts.unselectAll')}
+                className={cn(
+                  styles.unselectButton,
+                  noSelected && !hasHistory && styles.disabled,
+                )}
+                onClick={handleToggle}
               >
-                <button
-                  disabled={noSelected && !hasHistory}
-                  aria-label={
-                    hasHistory
-                      ? 'Restore Unselected Sounds'
-                      : 'Unselect All Sounds'
-                  }
-                  className={cn(
-                    styles.unselectButton,
-                    noSelected && !hasHistory && styles.disabled,
-                  )}
-                  onClick={handleToggle}
-                >
-                  {hasHistory ? <BiUndo /> : <BiTrash />}
-                </button>
-              </Tooltip>
-            </Tooltip.Provider>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+                {hasHistory ? <BiUndo /> : <BiTrash />}
+              </button>
+            </Tooltip>
+          </Tooltip.Provider>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

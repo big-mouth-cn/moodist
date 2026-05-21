@@ -10,6 +10,7 @@ import { Button } from './button';
 import { useNoteStore } from '@/stores/note';
 import { useCopy } from '@/hooks/use-copy';
 import { download } from '@/helpers/download';
+import { useI18n } from '@/hooks/use-i18n';
 
 import styles from './notepad.module.css';
 import { Tooltip } from '@/components/tooltip';
@@ -31,6 +32,7 @@ export function Notepad({ onClose, show }: NotepadProps) {
   const restore = useNoteStore(state => state.restore);
 
   const { copy, copying } = useCopy();
+  const { t } = useI18n();
 
   useEffect(() => {
     if (show && textareaRef.current) {
@@ -49,24 +51,24 @@ export function Notepad({ onClose, show }: NotepadProps) {
   return (
     <Modal show={show} wide onClose={onClose}>
       <header className={styles.header}>
-        <h2 className={styles.label}>Your Note</h2>
+        <h2 className={styles.label}>{t('notepad.title')}</h2>
         <div className={styles.buttons}>
           <Tooltip.Provider delayDuration={0}>
             <Button
               icon={copying ? <FaCheck /> : <LuCopy />}
-              tooltip="Copy Note"
+              tooltip={t('notepad.copy')}
               onClick={() => copy(note)}
             />
             <Button
               icon={<LuDownload />}
-              tooltip="Download Note"
-              onClick={() => download('Moodit Note.txt', note)}
+              tooltip={t('notepad.download')}
+              onClick={() => download(t('notepad.fileName'), note)}
             />
             <Button
               critical={!history}
               icon={history ? <FaUndo /> : <BiTrash />}
               recommended={!!history}
-              tooltip={history ? 'Restore Note' : 'Clear Note'}
+              tooltip={history ? t('notepad.restore') : t('notepad.clear')}
               onClick={() => (history ? restore() : clear())}
             />
           </Tooltip.Provider>
@@ -76,7 +78,7 @@ export function Notepad({ onClose, show }: NotepadProps) {
       <textarea
         className={styles.textarea}
         dir="auto"
-        placeholder="What is on your mind?"
+        placeholder={t('notepad.placeholder')}
         ref={textareaRef}
         spellCheck={false}
         value={note}
@@ -85,8 +87,13 @@ export function Notepad({ onClose, show }: NotepadProps) {
       />
 
       <p className={styles.counter}>
-        {characters} character{characters !== 1 && 's'} • {words} word
-        {words !== 1 && 's'}
+        {t('notepad.counter', {
+          characters,
+          characterLabel:
+            characters === 1 ? t('notepad.character') : t('notepad.characters'),
+          wordLabel: words === 1 ? t('notepad.word') : t('notepad.words'),
+          words,
+        })}
       </p>
     </Modal>
   );

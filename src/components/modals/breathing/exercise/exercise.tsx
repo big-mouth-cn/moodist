@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo, useCallback } from 'react';
 import { motion } from 'motion/react';
 
 import { padNumber } from '@/helpers/number';
+import { useI18n } from '@/hooks/use-i18n';
 
 import styles from './exercise.module.css';
 
@@ -28,6 +29,7 @@ const PHASE_LABELS: Record<Phase, string> = {
 };
 
 export function Exercise() {
+  const { t } = useI18n();
   const [selectedExercise, setSelectedExercise] =
     useState<Exercise>('4-7-8 Breathing');
   const [phaseIndex, setPhaseIndex] = useState(0);
@@ -105,7 +107,13 @@ export function Exercise() {
           key={selectedExercise}
           variants={animationVariants}
         />
-        <p className={styles.phase}>{PHASE_LABELS[currentPhase]}</p>
+        <p className={styles.phase}>
+          {PHASE_LABELS[currentPhase] === 'Hold'
+            ? t('breathing.phases.hold')
+            : PHASE_LABELS[currentPhase] === 'Inhale'
+              ? t('breathing.phases.inhale')
+              : t('breathing.phases.exhale')}
+        </p>
       </div>
 
       <div className={styles.selectWrapper}>
@@ -116,7 +124,11 @@ export function Exercise() {
         >
           {Object.keys(EXERCISE_PHASES).map(exercise => (
             <option key={exercise} value={exercise}>
-              {exercise}
+              {exercise === 'Box Breathing'
+                ? t('breathing.exercises.box')
+                : exercise === 'Resonant Breathing'
+                  ? t('breathing.exercises.resonant')
+                  : t('breathing.exercises.fourSevenEight')}
             </option>
           ))}
         </select>

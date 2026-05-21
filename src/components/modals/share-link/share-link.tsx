@@ -5,6 +5,7 @@ import { Modal } from '@/components/modal';
 
 import { useCopy } from '@/hooks/use-copy';
 import { useSoundStore } from '@/stores/sound';
+import { useI18n } from '@/hooks/use-i18n';
 
 import styles from './share-link.module.css';
 
@@ -17,6 +18,7 @@ export function ShareLinkModal({ onClose, show }: ShareLinkModalProps) {
   const [isMounted, setIsMounted] = useState(false);
   const sounds = useSoundStore(state => state.sounds);
   const { copy, copying } = useCopy();
+  const { t } = useI18n();
 
   const selected = useMemo(() => {
     return Object.keys(sounds)
@@ -51,11 +53,8 @@ export function ShareLinkModal({ onClose, show }: ShareLinkModalProps) {
 
   return (
     <Modal show={show} onClose={onClose}>
-      <h1 className={styles.heading}>Share your sound selection!</h1>
-      <p className={styles.desc}>
-        Copy and send the following link to the person you want to share your
-        selection with.
-      </p>
+      <h1 className={styles.heading}>{t('share.title')}</h1>
+      <p className={styles.desc}>{t('share.desc')}</p>
       <div className={styles.inputWrapper}>
         <input readOnly type="text" value={url} />
         <button onClick={() => copy(url)}>

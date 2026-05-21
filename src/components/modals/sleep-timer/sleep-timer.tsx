@@ -7,6 +7,7 @@ import { useSoundStore } from '@/stores/sound';
 import { cn } from '@/helpers/styles';
 import { FADE_OUT } from '@/constants/events';
 import { useSleepTimerStore } from '@/stores/sleep-timer';
+import { useI18n } from '@/hooks/use-i18n';
 
 import styles from './sleep-timer.module.css';
 
@@ -18,6 +19,7 @@ interface SleepTimerModalProps {
 export function SleepTimerModal({ onClose, show }: SleepTimerModalProps) {
   const setActive = useSleepTimerStore(state => state.set);
   const noSelected = useSoundStore(state => state.noSelected());
+  const { t } = useI18n();
 
   const [running, setRunning] = useState(false);
 
@@ -28,8 +30,8 @@ export function SleepTimerModal({ onClose, show }: SleepTimerModalProps) {
 
   const totalSeconds = useMemo(
     () =>
-      (hours === '' ? 0 : parseInt(hours)) * 3600 +
-      (minutes === '' ? 0 : parseInt(minutes)) * 60,
+      (hours === '' ? 0 : parseInt(hours, 10)) * 3600 +
+      (minutes === '' ? 0 : parseInt(minutes, 10)) * 60,
     [hours, minutes],
   );
 
@@ -91,21 +93,27 @@ export function SleepTimerModal({ onClose, show }: SleepTimerModalProps) {
   return (
     <Modal show={show} onClose={onClose}>
       <header className={styles.header}>
-        <h2 className={styles.title}>Sleep Timer</h2>
-        <p className={styles.desc}>
-          Stop sounds after a certain amount of time.
-        </p>
+        <h2 className={styles.title}>{t('sleepTimer.title')}</h2>
+        <p className={styles.desc}>{t('sleepTimer.desc')}</p>
       </header>
 
       <form onSubmit={handleSubmit}>
         <div className={styles.controls}>
           <div className={styles.inputs}>
             {!running && (
-              <Field label="Hours" value={hours} onChange={setHours} />
+              <Field
+                label={t('sleepTimer.hours')}
+                value={hours}
+                onChange={setHours}
+              />
             )}
 
             {!running && (
-              <Field label="Minutes" value={minutes} onChange={setMinutes} />
+              <Field
+                label={t('sleepTimer.minutes')}
+                value={minutes}
+                onChange={setMinutes}
+              />
             )}
           </div>
 
@@ -118,7 +126,7 @@ export function SleepTimerModal({ onClose, show }: SleepTimerModalProps) {
                 type="button"
                 onClick={handleReset}
               >
-                Reset
+                {t('actions.reset')}
               </button>
             )}
 
@@ -127,7 +135,7 @@ export function SleepTimerModal({ onClose, show }: SleepTimerModalProps) {
                 className={cn(styles.button, styles.primary)}
                 type="submit"
               >
-                Start
+                {t('actions.start')}
               </button>
             )}
           </div>

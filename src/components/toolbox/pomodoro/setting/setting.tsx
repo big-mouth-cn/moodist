@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { Modal } from '@/components/modal';
+import { useI18n } from '@/hooks/use-i18n';
 
 import styles from './setting.module.css';
 
@@ -13,6 +14,7 @@ interface SettingProps {
 
 export function Setting({ onChange, onClose, show, times }: SettingProps) {
   const [values, setValues] = useState<Record<string, number | string>>(times);
+  const { t } = useI18n();
 
   useEffect(() => {
     if (show) setValues(times);
@@ -46,34 +48,37 @@ export function Setting({ onChange, onClose, show, times }: SettingProps) {
 
   return (
     <Modal lockBody={false} show={show} onClose={onClose}>
-      <h2 className={styles.title}>Change Times</h2>
+      <h2 className={styles.title}>{t('pomodoro.changeTimes')}</h2>
 
       <form className={styles.form} onSubmit={handleSubmit}>
         <Field
           id="pomodoro"
-          label="Pomodoro"
+          label={t('pomodoro.pomodoro')}
+          minutesLabel={t('pomodoro.minutes')}
           value={values.pomodoro}
           onChange={handleChange('pomodoro')}
         />
         <Field
           id="short"
-          label="Short Break"
+          label={t('pomodoro.shortBreak')}
+          minutesLabel={t('pomodoro.minutes')}
           value={values.short}
           onChange={handleChange('short')}
         />
         <Field
           id="long"
-          label="Long Break"
+          label={t('pomodoro.longBreak')}
+          minutesLabel={t('pomodoro.minutes')}
           value={values.long}
           onChange={handleChange('long')}
         />
 
         <div className={styles.buttons}>
           <button type="button" onClick={handleCancel}>
-            Cancel
+            {t('actions.cancel')}
           </button>
           <button className={styles.primary} type="submit">
-            Save
+            {t('actions.save')}
           </button>
         </div>
       </form>
@@ -84,15 +89,16 @@ export function Setting({ onChange, onClose, show, times }: SettingProps) {
 interface FieldProps {
   id: string;
   label: string;
+  minutesLabel: string;
   onChange: (value: number | string) => void;
   value: number | string;
 }
 
-function Field({ id, label, onChange, value }: FieldProps) {
+function Field({ id, label, minutesLabel, onChange, value }: FieldProps) {
   return (
     <div className={styles.field}>
       <label className={styles.label} htmlFor={id}>
-        {label} <span>(minutes)</span>
+        {label} <span>({minutesLabel})</span>
       </label>
       <input
         className={styles.input}

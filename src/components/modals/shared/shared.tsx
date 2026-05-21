@@ -5,6 +5,7 @@ import { Modal } from '@/components/modal';
 import { useSoundStore } from '@/stores/sound';
 import { useSnackbar } from '@/contexts/snackbar';
 import { useCloseListener } from '@/hooks/use-close-listener';
+import { useI18n } from '@/hooks/use-i18n';
 import { cn } from '@/helpers/styles';
 import { sounds } from '@/data/sounds';
 
@@ -13,6 +14,7 @@ import styles from './shared.module.css';
 export function SharedModal() {
   const override = useSoundStore(state => state.override);
   const showSnackbar = useSnackbar();
+  const { t } = useI18n();
 
   const [isOpen, setIsOpen] = useState(false);
   const [sharedSounds, setSharedSounds] = useState<
@@ -48,7 +50,7 @@ export function SharedModal() {
           if (allSounds[sound]) {
             _sharedSounds.push({
               id: sound,
-              label: allSounds[sound],
+              label: t(`sounds.${sound}`),
               volume: Number(parsed[sound]),
             });
           }
@@ -58,7 +60,7 @@ export function SharedModal() {
           setIsOpen(true);
           setSharedSounds(_sharedSounds);
         }
-      } catch (error) {
+      } catch {
         return;
       } finally {
         history.pushState({}, '', location.href.split('?')[0]);
@@ -75,18 +77,15 @@ export function SharedModal() {
 
     override(newSounds);
     setIsOpen(false);
-    showSnackbar('Done! You can now play the new selection.');
+    showSnackbar(t('snackbars.sharedApplied'));
   };
 
   useCloseListener(() => setIsOpen(false));
 
   return (
     <Modal show={isOpen} onClose={() => setIsOpen(false)}>
-      <h1 className={styles.heading}>New sound mix detected!</h1>
-      <p className={styles.desc}>
-        Someone has shared the following mix with you. Would you want to
-        override your current selection?
-      </p>
+      <h1 className={styles.heading}>{t('shared.title')}</h1>
+      <p className={styles.desc}>{t('shared.desc')}</p>
       <div className={styles.sounds}>
         {sharedSounds.map(sound => (
           <div className={styles.sound} key={sound.id}>
@@ -96,13 +95,13 @@ export function SharedModal() {
       </div>
       <div className={styles.footer}>
         <button className={cn(styles.button)} onClick={() => setIsOpen(false)}>
-          Cancel
+          {t('actions.cancel')}
         </button>
         <button
           className={cn(styles.button, styles.primary)}
           onClick={handleOverride}
         >
-          Override
+          {t('actions.override')}
         </button>
       </div>
     </Modal>

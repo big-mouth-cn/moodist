@@ -5,6 +5,7 @@ import { useHotkeys } from 'react-hotkeys-hook';
 import { useSoundStore } from '@/stores/sound';
 import { useSnackbar } from '@/contexts/snackbar';
 import { cn } from '@/helpers/styles';
+import { useI18n } from '@/hooks/use-i18n';
 
 import styles from './play.module.css';
 
@@ -16,14 +17,15 @@ export function PlayButton() {
   const locked = useSoundStore(state => state.locked);
 
   const showSnackbar = useSnackbar();
+  const { t } = useI18n();
 
   const handleToggle = useCallback(() => {
     if (locked) return;
 
-    if (noSelected) return showSnackbar('Please first select a sound to play.');
+    if (noSelected) return showSnackbar(t('snackbars.selectSoundFirst'));
 
     toggle();
-  }, [showSnackbar, toggle, noSelected, locked]);
+  }, [showSnackbar, t, toggle, noSelected, locked]);
 
   useEffect(() => {
     if (isPlaying && noSelected) pause();
@@ -42,14 +44,14 @@ export function PlayButton() {
           <span aria-hidden="true">
             <BiPause />
           </span>{' '}
-          Pause
+          {t('actions.pause')}
         </>
       ) : (
         <>
           <span aria-hidden="true">
             <BiPlay />
           </span>{' '}
-          Play
+          {t('actions.play')}
         </>
       )}
     </button>

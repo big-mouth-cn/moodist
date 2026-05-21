@@ -2,6 +2,7 @@
   "name": "moodist",
   "type": "module",
   "version": "2.6.0",
+  "packageManager": "pnpm@10.17.1",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

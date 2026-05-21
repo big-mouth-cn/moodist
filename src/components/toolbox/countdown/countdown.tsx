@@ -6,6 +6,7 @@ import { useSoundEffect } from '@/hooks/use-sound-effect';
 import { useSettingsStore } from '@/stores/settings';
 import { cn } from '@/helpers/styles';
 import { padNumber } from '@/helpers/number';
+import { useI18n } from '@/hooks/use-i18n';
 
 import styles from './countdown.module.css';
 
@@ -23,6 +24,7 @@ export function Countdown({ onClose, show }: CountdownProps) {
   const [isActive, setIsActive] = useState(false);
   const [isFormVisible, setIsFormVisible] = useState(true);
   const alarmVolume = useSettingsStore(state => state.alarmVolume);
+  const { t } = useI18n();
 
   const alarm = useSoundEffect('/sounds/alarm.mp3', alarmVolume);
 
@@ -75,8 +77,8 @@ export function Countdown({ onClose, show }: CountdownProps) {
   return (
     <Modal show={show} onClose={onClose}>
       <header className={styles.header}>
-        <h2 className={styles.title}>Countdown Timer</h2>
-        <p className={styles.desc}>Super simple countdown timer.</p>
+        <h2 className={styles.title}>{t('countdown.title')}</h2>
+        <p className={styles.desc}>{t('countdown.desc')}</p>
       </header>
 
       {isFormVisible ? (
@@ -87,7 +89,9 @@ export function Countdown({ onClose, show }: CountdownProps) {
               placeholder="HH"
               type="number"
               value={hours}
-              onChange={e => setHours(Math.max(0, parseInt(e.target.value)))}
+              onChange={e =>
+                setHours(Math.max(0, parseInt(e.target.value, 10)))
+              }
             />
 
             <span>:</span>
@@ -98,7 +102,9 @@ export function Countdown({ onClose, show }: CountdownProps) {
               type="number"
               value={minutes}
               onChange={e =>
-                setMinutes(Math.max(0, Math.min(59, parseInt(e.target.value))))
+                setMinutes(
+                  Math.max(0, Math.min(59, parseInt(e.target.value, 10))),
+                )
               }
             />
 
@@ -110,7 +116,9 @@ export function Countdown({ onClose, show }: CountdownProps) {
               type="number"
               value={seconds}
               onChange={e =>
-                setSeconds(Math.max(0, Math.min(59, parseInt(e.target.value))))
+                setSeconds(
+                  Math.max(0, Math.min(59, parseInt(e.target.value, 10))),
+                )
               }
             />
           </div>
@@ -120,7 +128,7 @@ export function Countdown({ onClose, show }: CountdownProps) {
               className={cn(styles.button, styles.primary)}
               onClick={handleStart}
             >
-              Start
+              {t('actions.start')}
             </button>
           </div>
         </div>
@@ -133,14 +141,14 @@ export function Countdown({ onClose, show }: CountdownProps) {
 
           <div className={styles.buttonContainer}>
             <button className={styles.button} onClick={handleBack}>
-              Back
+              {t('actions.back')}
             </button>
 
             <button
               className={cn(styles.button, styles.primary)}
               onClick={toggleTimer}
             >
-              {isActive ? 'Pause' : 'Start'}
+              {isActive ? t('actions.pause') : t('actions.start')}
             </button>
           </div>
         </div>

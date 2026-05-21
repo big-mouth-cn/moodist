@@ -5,6 +5,7 @@ import { Modal } from '@/components/modal/modal';
 
 import styles from './lofi.module.css';
 import { padNumber } from '@/helpers/number';
+import { useI18n } from '@/hooks/use-i18n';
 
 interface LofiProps {
   onClose: () => void;
@@ -41,27 +42,23 @@ const videos = [
 
 export function LofiModal({ onClose, show }: LofiProps) {
   const [isAccepted, setIsAccepted] = useState(false);
+  const { t } = useI18n();
 
   return (
     <Modal persist show={show} onClose={onClose}>
-      <h1 className={styles.title}>Lofi Music Player</h1>
+      <h1 className={styles.title}>{t('lofi.title')}</h1>
 
       {!isAccepted ? (
         <div className={styles.notice}>
-          <p>
-            This feature plays music using embedded YouTube videos. By
-            continuing, you agree to connect to YouTube, which may collect data
-            in accordance with their privacy policy. We do not control or track
-            this data.
-          </p>
+          <p>{t('lofi.notice')}</p>
 
           <div className={styles.buttons}>
-            <button onClick={onClose}>Cancel</button>
+            <button onClick={onClose}>{t('actions.cancel')}</button>
             <button
               className={styles.primary}
               onClick={() => setIsAccepted(true)}
             >
-              Continue
+              {t('actions.continue')}
             </button>
           </div>
         </div>

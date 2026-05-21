@@ -39,10 +39,12 @@ import { useSoundStore } from '@/stores/sound';
 
 import styles from './menu.module.css';
 import { useCloseListener } from '@/hooks/use-close-listener';
+import { useI18n } from '@/hooks/use-i18n';
 import { closeModals } from '@/lib/modal';
 
 export function Menu() {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useI18n();
 
   const noSelected = useSoundStore(state => state.noSelected());
 
@@ -104,7 +106,7 @@ export function Menu() {
       <div className={styles.wrapper}>
         <DropdownMenu.Root open={isOpen} onOpenChange={o => setIsOpen(o)}>
           <DropdownMenu.Trigger asChild>
-            <button aria-label="Menu" className={styles.menuButton}>
+            <button aria-label={t('common.menu')} className={styles.menuButton}>
               {isOpen ? <IoClose /> : <IoMenu />}
             </button>
           </DropdownMenu.Trigger>

@@ -3,11 +3,13 @@ import { BiUpArrowAlt } from 'react-icons/bi/index';
 import { motion } from 'motion/react';
 
 import { mix, fade, slideY } from '@/lib/motion';
+import { useI18n } from '@/hooks/use-i18n';
 
 import styles from './scroll-to-top.module.css';
 
 export function ScrollToTop() {
   const TOP = 50;
+  const { t } = useI18n();
 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -32,7 +34,7 @@ export function ScrollToTop() {
   return (
     <motion.button
       animate={isVisible ? 'show' : 'hidden'}
-      aria-label="Scroll to top"
+      aria-label={t('toolbar.scrollToTop')}
       className={styles.button}
       exit="hidden"
       initial="hidden"
