@@ -7,8 +7,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import {
   ShuffleItem,
   ShareItem,
-  DonateItem,
-  SourceItem,
+  AboutItem,
   SettingsItem,
   PresetsItem,
   ShortcutsItem,
@@ -32,6 +31,7 @@ import { BreathingExerciseModal } from '@/components/modals/breathing';
 import { BinauralModal } from '@/components/modals/binaural';
 import { IsochronicModal } from '@/components/modals/isochronic';
 import { LofiModal } from '@/components/modals/lofi';
+import { AboutModal } from '@/components/modals/about';
 import { Pomodoro, Notepad, Todo, Countdown } from '@/components/toolbox';
 
 import { fade, mix, slideY } from '@/lib/motion';
@@ -50,6 +50,7 @@ export function Menu() {
 
   const initial = useMemo(
     () => ({
+      about: false,
       binaural: false,
       breathing: false,
       countdown: false,
@@ -149,9 +150,7 @@ export function Menu() {
                     <SettingsItem open={() => open('settings')} />
                     <Divider />
                     <ShortcutsItem open={() => open('shortcuts')} />
-                    <Divider />
-                    <DonateItem />
-                    <SourceItem />
+                    <AboutItem open={() => open('about')} />
                   </motion.div>
                 </DropdownMenu.Content>
               </DropdownMenu.Portal>
@@ -192,6 +191,7 @@ export function Menu() {
         onClose={() => close('isochronic')}
       />
       <LofiModal show={modals.lofi} onClose={() => close('lofi')} />
+      <AboutModal show={modals.about} onClose={() => close('about')} />
     </>
   );
 }

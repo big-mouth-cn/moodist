@@ -147,6 +147,7 @@ export const translations = {
       lofi: 'Lofi Music Player',
       settings: 'Settings',
       shortcuts: 'Shortcuts',
+      about: 'About',
       donate: 'Buy Me a Coffee',
       source: 'Source Code',
     },
@@ -286,6 +287,13 @@ export const translations = {
           'LLM is not configured. Set PUBLIC_LLM_BASE_URL, PUBLIC_LLM_API_KEY, and PUBLIC_LLM_MODEL.',
         requestFailed: 'Could not generate a soundscape. Please try again.',
       },
+    },
+    about: {
+      title: 'About Moodist',
+      desc: 'Moodist is a free ambient sound mixer for focus, rest, and calm.',
+      customize:
+        'Layer sounds, tune each volume, save presets, and share your mix with a link.',
+      meta: 'Runs locally in your browser and works as an installable PWA.',
     },
     donate: {
       title: 'Support Me',
@@ -443,6 +451,7 @@ export const translations = {
       lofi: 'Lofi 音乐播放器',
       settings: '设置',
       shortcuts: '快捷键',
+      about: '关于',
       donate: '请我喝咖啡',
       source: '源代码',
     },
@@ -581,6 +590,13 @@ export const translations = {
           'LLM 未配置。请设置 PUBLIC_LLM_BASE_URL、PUBLIC_LLM_API_KEY 和 PUBLIC_LLM_MODEL。',
         requestFailed: '暂时无法生成音效组合，请稍后重试。',
       },
+    },
+    about: {
+      title: '关于 Moodist',
+      desc: 'Moodist 是一个免费的环境音混音工具，适合专注、休息和平静下来。',
+      customize:
+        '你可以叠加多个声音、调节单独音量、保存预设，并用链接分享组合。',
+      meta: '交互功能在浏览器本地运行，也可以作为 PWA 安装使用。',
     },
     donate: {
       title: '支持我',
