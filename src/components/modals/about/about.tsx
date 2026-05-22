@@ -1,3 +1,5 @@
+import { LuGithub } from 'react-icons/lu/index';
+
 import { Modal } from '@/components/modal';
 import { useI18n } from '@/hooks/use-i18n';
 
@@ -18,15 +20,16 @@ export function AboutModal({ onClose, show }: AboutModalProps) {
         <p className={styles.paragraph}>{t('about.desc')}</p>
         <p className={styles.paragraph}>{t('about.customize')}</p>
         <p className={styles.paragraph}>
-          {t('about.sourcePrefix')}{' '}
+          {t('about.projectPrefix')}{' '}
           <a
-            href="https://github.com/remvze/moodist"
+            className={styles.githubLink}
+            href="https://github.com/big-mouth-cn/moodist"
             rel="noreferrer"
             target="_blank"
           >
-            {t('about.sourceLink')}
-          </a>{' '}
-          {t('about.sourceSuffix')}
+            <LuGithub aria-hidden="true" />
+            {t('about.projectLink')}
+          </a>
         </p>
         <p className={styles.meta}>{t('about.meta')}</p>
       </div>

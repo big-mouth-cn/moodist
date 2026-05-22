@@ -26,6 +26,13 @@
       border-radius: 4px;
     }
   }
+
+  & .githubLink {
+    display: inline-flex;
+    column-gap: 5px;
+    align-items: center;
+    font-weight: 500;
+  }
 }
 
 .meta {

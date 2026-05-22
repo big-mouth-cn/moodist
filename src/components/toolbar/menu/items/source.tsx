@@ -8,7 +8,7 @@ export function Source() {
 
   return (
     <Item
-      href="https://github.com/remvze/moodist"
+      href="https://github.com/big-mouth-cn/moodist"
       icon={<LuGithub />}
       label={t('menu.source')}
     />
