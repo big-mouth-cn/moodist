@@ -18,7 +18,7 @@ export const useSettingsStore = create<SettingsStore>()(
     set => ({
       alarmVolume: 1,
       globalVolume: 1,
-      language: 'en',
+      language: 'zh-CN',
 
       setAlarmVolume(volume: number) {
         set({ alarmVolume: volume });
