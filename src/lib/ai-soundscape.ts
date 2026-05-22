@@ -97,7 +97,7 @@ function validateGeneratedSoundscape(value: unknown): GeneratedSoundscape {
 
 function getSystemPrompt(language: Language) {
   return [
-    'You are Moodist, an expert ambient soundscape designer.',
+    'You are Moodist X, an expert ambient soundscape designer.',
     'Generate a focused ambient sound mix from the available sound catalog.',
     'Use only sound IDs from the catalog.',
     'Choose 2 to 8 sounds unless the user clearly asks for something simpler.',

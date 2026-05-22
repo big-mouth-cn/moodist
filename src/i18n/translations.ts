@@ -263,12 +263,12 @@ export const translations = {
       characters: 'characters',
       word: 'word',
       words: 'words',
-      fileName: 'Moodist Note.txt',
+      fileName: 'Moodist X Note.txt',
     },
     aiSoundscape: {
       title: 'AI Soundscape',
       tooltip: 'Generate a soundscape with AI',
-      desc: 'Describe a scene, mood, or environment. AI will pick a balanced mix from the available Moodist sounds.',
+      desc: 'Describe a scene, mood, or environment. AI will pick a balanced mix from the available Moodist X sounds.',
       placeholder:
         'Example: a rainy night cafe for focused writing, with soft thunder in the background',
       generate: 'Generate Soundscape',
@@ -300,15 +300,15 @@ export const translations = {
       },
     },
     about: {
-      title: 'About Moodist',
-      desc: 'Moodist is a free ambient sound mixer for focus, rest, and calm.',
+      title: 'About Moodist X',
+      desc: 'Moodist X is a free ambient sound mixer for focus, rest, and calm.',
       customize:
         'Layer sounds, tune each volume, save presets, and share your mix with a link.',
       meta: 'Runs locally in your browser and works as an installable PWA.',
     },
     donate: {
       title: 'Support Me',
-      desc: 'Help me keep Moodist ad-free.',
+      desc: 'Help me keep Moodist X ad-free.',
       button: 'Donate Today',
     },
     reload: {
@@ -578,12 +578,12 @@ export const translations = {
       characters: '字符',
       word: '词',
       words: '词',
-      fileName: 'Moodist 笔记.txt',
+      fileName: 'Moodist X 笔记.txt',
     },
     aiSoundscape: {
       title: 'AI 音效组合',
       tooltip: '用 AI 生成音效组合',
-      desc: '描述一个场景、状态或环境，AI 会从 Moodist 的可用音效中生成一个平衡的组合。',
+      desc: '描述一个场景、状态或环境，AI 会从 Moodist X 的可用音效中生成一个平衡的组合。',
       placeholder: '例如：适合专注写作的雨夜咖啡馆，背景里有轻微雷声',
       generate: '生成音效组合',
       generating: '生成中...',
@@ -614,15 +614,15 @@ export const translations = {
       },
     },
     about: {
-      title: '关于 Moodist',
-      desc: 'Moodist 是一个免费的环境音混音工具，适合专注、休息和平静下来。',
+      title: '关于 Moodist X',
+      desc: 'Moodist X 是一个免费的环境音混音工具，适合专注、休息和平静下来。',
       customize:
         '你可以叠加多个声音、调节单独音量、保存预设，并用链接分享组合。',
       meta: '交互功能在浏览器本地运行，也可以作为 PWA 安装使用。',
     },
     donate: {
       title: '支持我',
-      desc: '帮助我让 Moodist 保持无广告。',
+      desc: '帮助我让 Moodist X 保持无广告。',
       button: '立即捐赠',
     },
     reload: {

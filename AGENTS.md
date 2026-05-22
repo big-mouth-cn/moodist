@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Moodist is an Astro 4 single-page static web app for building ambient
+Moodist X is an Astro 4 single-page static web app for building ambient
 soundscapes. The page is mostly server-rendered Astro content with React islands
 for the interactive app. Users can layer looped ambient sounds, tune per-sound
 volume, save presets, share mixes through URLs, run focus tools, and install the
@@ -217,7 +217,7 @@ click close, body scroll locking, and animated overlay/content transitions.
 
 `MediaControls` checks for `navigator.mediaSession`. If available,
 `MediaSessionTrack` plays a looping silent `/sounds/silence.wav` track while
-Moodist is playing so OS/browser media controls remain active. Media session
+Moodist X is playing so OS/browser media controls remain active. Media session
 play/pause handlers call the sound store. Safari reloads the silent audio on
 pause to avoid replay issues.
 

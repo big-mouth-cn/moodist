@@ -18,7 +18,7 @@ export function Hero() {
           <div className={styles.pattern} />
           <div className={styles.logoWrapper}>
             <img
-              alt="Faded Moodist Logo"
+              alt="Faded Moodist X Logo"
               aria-hidden="true"
               className={styles.logo}
               height={160}

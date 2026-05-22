@@ -183,7 +183,7 @@ All notable changes to this project will be documented in this file. See [standa
 * add ID to presets ([78222be](https://github.com/remvze/moodist/commit/78222be011cf93998faed0b7926a5b49dcdeb470))
 * add isochronic tone generator without styles ([d759064](https://github.com/remvze/moodist/commit/d759064373fe791f641db39549e05341068ae8a2))
 * add lofi radios ([bb39b4b](https://github.com/remvze/moodist/commit/bb39b4ba98f20da13e1e7a440441f5474a823f32))
-* add Moodist description to tools ([5b3972b](https://github.com/remvze/moodist/commit/5b3972b3470f3c43903d9a20925ed49321f07440))
+* add Moodist X description to tools ([5b3972b](https://github.com/remvze/moodist/commit/5b3972b3470f3c43903d9a20925ed49321f07440))
 * add more sounds ([d2e289e](https://github.com/remvze/moodist/commit/d2e289e5d5cccd050ca94860f05f00740b3cf139))
 * add more sounds ([554309e](https://github.com/remvze/moodist/commit/554309ebd87da2bce4555f09e5c9f34735d0b794))
 * add more sounds ([be38b92](https://github.com/remvze/moodist/commit/be38b92647209ce17032987b3d6f5d1800322db5))

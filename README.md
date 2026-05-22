@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="/assets/banner.png" alt="Moodist Logo Banner" />
-  <h2>Moodist 🌲</h2>
+  <img src="/assets/banner.png" alt="Moodist X Logo Banner" />
+  <h2>Moodist X 🌲</h2>
   <p>Ambient sounds for focus and calm.</p>
-  <a href="https://moodist.mvze.net">Visit <strong>Moodist</strong></a> | <a href="https://buymeacoffee.com/remvze">Buy Me a Coffee</a>
+  <a href="https://moodist.mvze.net">Visit <strong>Moodist X</strong></a> | <a href="https://buymeacoffee.com/remvze">Buy Me a Coffee</a>
   <br/><br/>
   <div>
     <a href="https://gitviews.com/">
@@ -62,11 +62,11 @@ http://localhost:8080
 
 Please check [CONTRIBUTING.md](CONTRIBUTING.md) file.
 
-## Support Moodist
+## Support Moodist X
 
 Please give a star if you liked this project.
 
-You can also [Buy Me a Coffee](https://buymeacoffee.com/remvze) to help me maintain Moodist.
+You can also [Buy Me a Coffee](https://buymeacoffee.com/remvze) to help me maintain Moodist X.
 
 ## License
 
