@@ -17,6 +17,17 @@ export function AboutModal({ onClose, show }: AboutModalProps) {
       <div className={styles.body}>
         <p className={styles.paragraph}>{t('about.desc')}</p>
         <p className={styles.paragraph}>{t('about.customize')}</p>
+        <p className={styles.paragraph}>
+          {t('about.sourcePrefix')}{' '}
+          <a
+            href="https://github.com/remvze/moodist"
+            rel="noreferrer"
+            target="_blank"
+          >
+            {t('about.sourceLink')}
+          </a>{' '}
+          {t('about.sourceSuffix')}
+        </p>
         <p className={styles.meta}>{t('about.meta')}</p>
       </div>
     </Modal>

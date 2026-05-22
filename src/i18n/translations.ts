@@ -7,6 +7,11 @@ export const languages: Array<{ id: Language; label: string }> = [
 
 export const translations = {
   en: {
+    meta: {
+      description:
+        'Moodist X is a free and open-source ambient sound generator featuring {count} carefully curated sounds. Create your ideal atmosphere for relaxation, focus, or creativity with this versatile tool.',
+      title: 'Moodist X: Ambient Sounds for Focus and Calm',
+    },
     actions: {
       add: 'Add',
       cancel: 'Cancel',
@@ -304,6 +309,9 @@ export const translations = {
       desc: 'Moodist X is a free ambient sound mixer for focus, rest, and calm.',
       customize:
         'Layer sounds, tune each volume, save presets, and share your mix with a link.',
+      sourcePrefix: 'Moodist X is built as a secondary development based on',
+      sourceLink: 'remvze/moodist',
+      sourceSuffix: 'and follows the MIT License.',
       meta: 'Runs locally in your browser and works as an installable PWA.',
     },
     donate: {
@@ -322,6 +330,11 @@ export const translations = {
     },
   },
   'zh-CN': {
+    meta: {
+      description:
+        'Moodist X 是一个免费开源的环境音生成器，内置 {count} 个精心整理的声音。创建适合放松、专注或创作的理想氛围。',
+      title: 'Moodist X：专注与平静的环境音效',
+    },
     actions: {
       add: '添加',
       cancel: '取消',
@@ -618,6 +631,9 @@ export const translations = {
       desc: 'Moodist X 是一个免费的环境音混音工具，适合专注、休息和平静下来。',
       customize:
         '你可以叠加多个声音、调节单独音量、保存预设，并用链接分享组合。',
+      sourcePrefix: 'Moodist X 基于开源项目',
+      sourceLink: 'remvze/moodist',
+      sourceSuffix: '进行二次开发，并遵循 MIT 协议。',
       meta: '交互功能在浏览器本地运行，也可以作为 PWA 安装使用。',
     },
     donate: {
