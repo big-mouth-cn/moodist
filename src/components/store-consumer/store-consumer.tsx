@@ -5,6 +5,7 @@ import { useSettingsStore } from '@/stores/settings';
 import { useNoteStore } from '@/stores/note';
 import { usePresetStore } from '@/stores/preset';
 import { useTodoStore } from '@/stores/todo';
+import { useAISoundscapeStore } from '@/stores/ai-soundscape';
 
 interface StoreConsumerProps {
   children: React.ReactNode;
@@ -17,6 +18,7 @@ export function StoreConsumer({ children }: StoreConsumerProps) {
     useNoteStore.persist.rehydrate();
     usePresetStore.persist.rehydrate();
     useTodoStore.persist.rehydrate();
+    useAISoundscapeStore.persist.rehydrate();
   }, []);
 
   return <>{children}</>;

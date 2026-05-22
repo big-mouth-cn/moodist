@@ -275,6 +275,17 @@ export const translations = {
       generating: 'Generating...',
       previewTitle: 'Generated Mix',
       apply: 'Apply and Play',
+      tabs: {
+        generate: 'Generate',
+        history: 'History ({count})',
+      },
+      history: {
+        apply: 'Apply and Play',
+        delete: 'Delete',
+        empty: 'No AI soundscape history yet. Generate one to save it here.',
+        soundCount: '{count} sounds',
+        usePrompt: 'Use Prompt',
+      },
       examples: {
         focus: 'A rainy night cafe for focused writing',
         sleep: 'A calm forest cabin for falling asleep',
@@ -578,6 +589,17 @@ export const translations = {
       generating: '生成中...',
       previewTitle: '生成结果',
       apply: '应用并播放',
+      tabs: {
+        generate: '生成',
+        history: '历史记录（{count}）',
+      },
+      history: {
+        apply: '应用并播放',
+        delete: '删除',
+        empty: '还没有 AI 音效组合记录。生成一次后会自动保存在这里。',
+        soundCount: '{count} 个音效',
+        usePrompt: '使用此描述',
+      },
       examples: {
         focus: '适合专注写作的雨夜咖啡馆',
         sleep: '帮助入睡的安静森林小屋',
